@@ -13,12 +13,14 @@ function PaginaJogo() {
     const {jogo} = useParams()
     const [play, setPlay] = useState("");    
 
+    const getjogos = async () => {
+        const { data } =   await api.get('/todos-jogos')
+        setPlay(data)
+       }
 
-    api.defaults.withCredentials = true;
+
     useEffect(() => {
-         api.get('/todos-jogos').then((res) => {
-             setPlay(res.data)
-         })
+        getjogos()
     }, [])
 
     return (

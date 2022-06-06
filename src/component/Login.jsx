@@ -10,28 +10,34 @@ function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    api.defaults.withCredentials = true;
-
     const [, setLoginStatus] = useState(false);
     let navigate = useNavigate();
 
-    const login = (event) => {
-        api.post('/login', {
-            email: email,
-            senha: senha
-        }).then((resp) => {
-            if (!resp.data.auth) {
-                setLoginStatus(false)
-            } else {
-                console.log(resp.data)
-                localStorage.setItem("token", resp.data.token)
-                setLoginStatus(true)
-                navigate("/home");
-            }
-        })
-        event.preventDefault()
-    }
+    const login = async (e) => {
 
+        try{
+            e.preventDefault()
+
+            const formData = {
+                email: email,
+                senha: senha
+            }
+    
+         const { data } = await api.post('/login', formData) 
+
+          if (!data.auth) {
+        setLoginStatus(false)
+    } else {
+        console.log(data)
+        localStorage.setItem("token", data.token)
+        setLoginStatus(true)
+        navigate("/home");
+    }
+        }catch(error){
+            console.error(error)
+        }
+       }
+   
 
 
     return (

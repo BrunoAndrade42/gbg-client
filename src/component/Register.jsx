@@ -1,27 +1,35 @@
 import React from 'react';
 import FontAwesomeIcon from './FontAwesomeIcon';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate  } from 'react-router-dom';
 import { useState } from 'react';
 import { api } from '../service/api';
 
 
 
+
 function Register() {
+    const navigate = useNavigate();
     const [usuario, setUsuario] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
+
+    const handleSubmit = async (e) => {
+    
+
+        const formData = {
+            usuario,
+            email,
+            senha
+        }
+       await api.post('/register', formData);
+
+       window.location.href('/')
+    }
+
     // const [registerStatus, setRegisterStatus] = useState("");
     
-    const handleSubmit = () => {
-        api.post('/register', {
-            usuario: usuario,
-            email: email,
-            senha: senha
-        }).then((e) => {
-            console.log(e)
-        })
-      }
+   
 
     return (
         <div className="container-login100">

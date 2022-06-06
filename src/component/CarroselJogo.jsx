@@ -12,12 +12,14 @@ function CarroselJogo () {
 
     const [categoria, setCategoria] = useState("");
 
+    const getCategogrias = async () => {
+       const {data} = await api.get('/categorias')
+        setCategoria(data)
+    }
 
-    api.defaults.withCredentials = true;
+   
     useEffect(() => {
-         api.get('/categorias').then((res) => {
-             setCategoria(res.data)
-         })
+        getCategogrias();
     }, [])
     
     return (

@@ -13,11 +13,13 @@ function TodosJogos() {
     const {id} = useParams()
     const [jogos, setJogos] = useState("");    
     
-    api.defaults.withCredentials = true;
+    const getjogos = async () => {
+     const { data } =   await api.get('/todos-jogos')
+        setJogos(data)
+    }
+   
     useEffect(() => {
-         api.get('/todos-jogos').then((res) => {
-             setJogos(res.data)
-         })
+        getjogos()
     }, [])
 
 
