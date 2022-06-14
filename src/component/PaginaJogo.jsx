@@ -1,7 +1,8 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import Nav from './Nav';
-import Comentario from './Comentario';
+import PopupAvaliar from './PopupAvaliar';
+import Avaliacao from './Avaliacao';
 import {useParams} from "react-router-dom";
 import { api } from '../service/api';
 import { useEffect } from 'react';
@@ -37,27 +38,15 @@ function PaginaJogo() {
                                     <p className="card-text-all">{play[game].descricaoJogo}</p>
                                     <h1 className="card-title-all">Como jogar?</h1>
                                     <p className="card-text-all">{play[game].comoJogarJogo}</p>
-                        
-                                    {/* <div className="comments-app">
-                                        <h1>Deixe um comentário</h1>
-                                        
-                                        <div className="comment-form">
-                                        
-                                            <form className="form" name="form">
-                                                <div className="form-row">
-                                                    <textarea
-                                                            className="input"
-                                                            placeholder="Add comment..."
-                                                            required></textarea>
-                                                </div>
-                                            
-                                                <div className="form-row">
-                                                    <input type="submit" value="Add Comment" />
-                                                </div>
-                                            </form>
-                                            <Comentario />
-                                        </div>
-                                    </div> */}
+                                    
+                                    <div className='centralizar'>
+                                        <PopupAvaliar avaliarJogo={play[game].idJogo}/>
+                                    </div>
+
+                                    <div>
+                                        <h2 className="card-title-all"> Pessoas que avaliaram:</h2>  
+                                        <Avaliacao avaliacoes={play[game].idJogo} />
+                                    </div>
                                 </Card.Body>
                             </Card>
                         )

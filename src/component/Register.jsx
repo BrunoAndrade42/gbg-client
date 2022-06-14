@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesomeIcon from './FontAwesomeIcon';
-import { Link , useNavigate  } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { api } from '../service/api';
 
@@ -8,10 +8,12 @@ import { api } from '../service/api';
 
 
 function Register() {
-    const navigate = useNavigate();
     const [usuario, setUsuario] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [dataNasc, setData] = useState("");
+    const [estado, setEstado] = useState("");
+    const [pais, setPais] = useState("");
 
 
     const handleSubmit = async (e) => {
@@ -25,10 +27,7 @@ function Register() {
        await api.post('/register', formData);
 
        window.location.href('/')
-    }
-
-    // const [registerStatus, setRegisterStatus] = useState("");
-    
+    }    
    
 
     return (
@@ -58,6 +57,33 @@ function Register() {
                         <span className="focus-input100"></span>
                         <span className="symbol-input100">
                             <FontAwesomeIcon icon="envelope" />
+                        </span> 
+                    </div>
+
+                    <div className="wrap-input100 validate-input" data-validate = "Requer uma data válida: xx/xx/xxxx">
+                        <input className="input100" type="date" name="dataNasc" value={dataNasc}
+                                onChange={(e) => setData(e.target.value)} />
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <FontAwesomeIcon icon="calendar-day" />
+                        </span> 
+                    </div>
+
+                    <div className="wrap-input100 validate-input" data-validate = "Requer um estado válido">
+                        <input className="input100" type="text" name="text" value={estado}
+                                onChange={(e) => setEstado(e.target.value)} placeholder="Estado" />
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <FontAwesomeIcon icon="city" />
+                        </span> 
+                    </div>
+
+                    <div className="wrap-input100 validate-input" data-validate = "Requer um país válido">
+                        <input className="input100" type="text" name="text" value={pais}
+                                onChange={(e) => setPais(e.target.value)} placeholder="País" />
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <FontAwesomeIcon icon="globe" />
                         </span> 
                     </div>
 

@@ -358,7 +358,26 @@ iframe {
   transition: all 0.4s;
 }
 
+.modal-form-btn {
+  font-family: Montserrat-Bold;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+  height: 50px;
+  border-radius: 25px;
+  background: #8D66D9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+}
+
 .login100-form-btn:hover {
+  background: #333333;
+
+}
+.modal-form-btn:hover {
   background: #333333;
 }
 
@@ -505,7 +524,6 @@ iframe {
 	font-size: 24px;
 	color: #FE9A01;
 	text-align: center;
-	float: right;
 	/* margin-bottom: -200px; */
 }
 
@@ -518,11 +536,22 @@ iframe {
   margin-top: -100px;
   padding-bottom: 50px;
 }
+ 
+.nav-link {
+  font-size: 16px;
+}
+
+.centralizar {
+  margin-left: 42%;
+  padding-top: 20px;
+}
 
 
-/* 
-.pfFunciona {
-  border: #000000;
-  border-style: groove;
-  border-radius: 15px;
-} */
+.label-top {
+  margin-top: -3px;
+  font-weight: bold;
+}
+
+.label-bold {
+  font-weight: bold;
+}

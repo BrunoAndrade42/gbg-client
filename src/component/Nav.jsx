@@ -15,11 +15,11 @@ class Nav extends React.Component {
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
                             <Link className="nav-link" to="/home">
-                                <span>Home</span>
+                                Home
                             </Link>
 
                             <Link className="nav-link" to="/login">
-                                <span>Logout</span>
+                                Logout
                             </Link>
                         </div>
                     </div>
