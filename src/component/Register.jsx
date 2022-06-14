@@ -17,7 +17,6 @@ function Register() {
 
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
         
         const formData = {
             usuario,
