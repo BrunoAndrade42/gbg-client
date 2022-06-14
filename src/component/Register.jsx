@@ -11,22 +11,20 @@ function Register() {
     const [usuario, setUsuario] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-    const [dataNasc, setData] = useState("");
-    const [estado, setEstado] = useState("");
-    const [pais, setPais] = useState("");
+    // const [dataNasc, setData] = useState("");
+    // const [estado, setEstado] = useState("");
+    // const [pais, setPais] = useState("");
 
 
     const handleSubmit = async (e) => {
-    
-
+        e.preventDefault()
+        
         const formData = {
             usuario,
             email,
             senha
         }
        await api.post('/register', formData);
-
-       window.location.href('/')
     }    
    
 
@@ -61,8 +59,7 @@ function Register() {
                     </div>
 
                     <div className="wrap-input100 validate-input" data-validate = "Requer uma data válida: xx/xx/xxxx">
-                        <input className="input100" type="date" name="dataNasc" value={dataNasc}
-                                onChange={(e) => setData(e.target.value)} />
+                        <input className="input100" type="date" name="dataNasc"  />
                         <span className="focus-input100"></span>
                         <span className="symbol-input100">
                             <FontAwesomeIcon icon="calendar-day" />
@@ -70,8 +67,7 @@ function Register() {
                     </div>
 
                     <div className="wrap-input100 validate-input" data-validate = "Requer um estado válido">
-                        <input className="input100" type="text" name="text" value={estado}
-                                onChange={(e) => setEstado(e.target.value)} placeholder="Estado" />
+                        <input className="input100" type="text" name="text" placeholder="Estado" />
                         <span className="focus-input100"></span>
                         <span className="symbol-input100">
                             <FontAwesomeIcon icon="city" />
@@ -79,8 +75,7 @@ function Register() {
                     </div>
 
                     <div className="wrap-input100 validate-input" data-validate = "Requer um país válido">
-                        <input className="input100" type="text" name="text" value={pais}
-                                onChange={(e) => setPais(e.target.value)} placeholder="País" />
+                        <input className="input100" type="text" name="text" placeholder="País" />
                         <span className="focus-input100"></span>
                         <span className="symbol-input100">
                             <FontAwesomeIcon icon="globe" />
