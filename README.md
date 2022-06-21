@@ -24,14 +24,14 @@ Executará o aplicativo no modo desenvolvedor em sua máquina local.\
 Abrirá [http://localhost:3000](http://localhost:3000) você visualizará a página no seu navegador
 
 ### Para funcionar em conjunto com o banco de dados: 
-É preciso ter o MySQL Workbench instalado devidamente no seu computador.
+- É preciso ter o MySQL Workbench instalado devidamente no seu computador.
 
-Faça um clone do servidor pelo link:
+- Faça um clone do servidor pelo link:
 https://github.com/BrunoAndrade42/gbg-server-v2
 
-Após isso, entre no arquivo index.js e coloque as configurações do seu banco de dados para conexão do mesmo.
+- Após isso, entre no arquivo index.js e coloque as configurações do seu banco de dados para conexão do mesmo.
 
-Insira as tabelas do projeto:
+- Insira as tabelas do projeto no mysql:
 
 ```sh
 CREATE TABLE autenticacao (
