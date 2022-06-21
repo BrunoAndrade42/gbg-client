@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+## Clone o projeto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://github.com/BrunoAndrade42/gbg-client-v2
 
-## Available Scripts
+Após clonado, entre pelo terminal na pasta do projeto e execute o comando:
 
-In the project directory, you can run:
+### `npm install`
+
+Esse comando instalará todas as dependencias necessárias para o projeto funcionar.
+
+
+Em seguida, entre na pasta service, no arquivo api.js, comente:
+#### `baseURL: "https://gbg-server.herokuapp.com"`
+e tire o comentário de
+#### `baseURL: "http://localhost:3001"`
+
+## Script Disponível
+
+No diretório do projeto, execute o comando:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Executará o aplicativo no modo desenvolvedor em sua máquina local.\
+Abrirá [http://localhost:3000](http://localhost:3000) você visualizará a página no seu navegador
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Para funcionar em conjunto com o banco de dados: 
+É preciso ter o MySQL Workbench instalado devidamente no seu computador.
 
-### `npm test`
+Faça um clone do servidor pelo link:
+https://github.com/BrunoAndrade42/gbg-server-v2
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Após isso, entre no arquivo index.js e coloque as configurações do seu banco de dados para conexão do mesmo.
 
-### `npm run build`
+Insira as tabelas do projeto:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+CREATE TABLE autenticacao (
+    idAutenticacao int NOT NULL AUTO_INCREMENT,
+    usuario varchar(8) NOT NULL,
+    email varchar(50) NOT NULL,
+    senha varchar(100) NOT NULL,
+    PRIMARY KEY (idAutenticacao)
+);
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+CREATE TABLE categorias (
+    idcategorias int NOT NULL AUTO_INCREMENT,
+    categoriasNome varchar(10) NOT NULL,
+    PRIMARY KEY (idcategorias)
+);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+CREATE TABLE jogos (
+    idJogo int NOT NULL AUTO_INCREMENT,
+    idCatJogo int NOT NULL,
+    nomeJogo varchar(45) NOT NULL,
+    subtituloJogo varchar(400),
+    descricaoJogo varchar(400),
+    comoJogarJogo varchar(400),
+    PRIMARY KEY (idJogo)
+);
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+CREATE TABLE avaliacoes (
+    idAvaliacao int NOT NULL AUTO_INCREMENT,
+    rating int NOT NULL,
+    autor varchar(20) NOT NULL,
+    email varchar(50) NOT NULL,
+    conteudo varchar(500),
+    idJogo int  NOT NULL,
+    FOREIGN KEY (idJogo) REFERENCES jogos(idJogo),
+    PRIMARY KEY (idAvaliacao)
+);
+```
+E pronto, as configurações estão concluídas para funcionar o projeto localmente em seu computador.
